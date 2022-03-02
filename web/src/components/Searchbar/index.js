@@ -1,29 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import './index.css'
+import TripsContext from '../../context/ManageTrips/tripsContext'
 
 const Searchbar = ({setShowData}) => {
+    const tripsContext = useContext(TripsContext);
+    const { getTrips, trips } = tripsContext;
 
-    const baseURL = 'http://localhost:8080'
-    
-    const getTripsRequestAPI = async ({keyword}) => {
-        try{
-            await fetch(`${baseURL}/api/trips?keyword=${keyword}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data)
-                    setShowData(data)
-                })
-                .catch(err => {
-                    console.error('Error: ', err)
-                });
-        } catch (err) {
-            console.log(err)
-        }
-    }
+    useEffect(() => {
+        console.log(trips)
+    }, [trips])
 
     const handleSearch = (e) => {
         if (e.key === 'Enter') {
-            getTripsRequestAPI({keyword: e.target.value});
+            getTrips({ keyword: e.target.value})
         }
     }
     return (
@@ -32,4 +21,4 @@ const Searchbar = ({setShowData}) => {
     );
   }
   
-  export default Searchbar;
+export default Searchbar;
