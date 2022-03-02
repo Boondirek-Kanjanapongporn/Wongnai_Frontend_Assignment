@@ -1,0 +1,10 @@
+{
+    "services" : {
+        "api" : {
+            "apiName" : "api",
+            "host" : "http://localhost",
+            "port" : 9000,
+            "url" : "http://localhost:9000/"
+        }
+    }
+}
