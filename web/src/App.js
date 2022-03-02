@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Home from './pages';
+import TripsState from './context/ManageTrips/tripsState';
 
 function App() {
   return (
-    <Home/>
+    <Fragment>
+      <TripsState>
+        <Home/>
+      </TripsState>
+    </Fragment>
   );
 }
 
