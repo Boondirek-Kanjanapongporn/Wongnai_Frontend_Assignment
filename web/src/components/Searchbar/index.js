@@ -1,79 +1,33 @@
 import React from 'react'
 import './index.css'
 
-const Searchbar = () => {
-    const getKeywordRequestAPI = async ({keyword}) => {
-        console.log(keyword)
+const Searchbar = ({setShowData}) => {
 
-        await fetch('http://localhost:9000/trips')
-        .then(response => response.json())
-        .then(data => console.log(data));
-        // try{
-        //     await fetch(`http://localhost:9000/trips`)
-        //         .then((res) => {
-        //             res.json()
-        //         }).then((result) => {
-        //             JSON.stringify(result)
-        //         })
-        //         .catch((err) => {
-        //             console.log(err)
-        //         })
-        // } catch (err) {
-        //     console.log(err)
-        // }
-
+    const baseURL = 'http://localhost:8080'
+    
+    const getTripsRequestAPI = async ({keyword}) => {
         try{
-            fetch(`http://localhost:9000/trips`, {
-                method:'GET',
-                headers:{"Content-Type":"application/json"}
-            }).then((res) => res.json()).then((result) => {JSON.stringify(result)})
-                // .then((res) => {
-                //     res.json()
-                // }).then((result) => {
-                //     JSON.stringify(result)
-                // })
-                // .catch((err) => {
-                //     console.log(err)
-                // })
+            await fetch(`${baseURL}/api/trips?keyword=${keyword}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data)
+                    setShowData(data)
+                })
+                .catch(err => {
+                    console.error('Error: ', err)
+                });
         } catch (err) {
             console.log(err)
         }
-        // try{
-        //     await fetch(`/trips`, {
-        //         method: 'GET',
-        //         headers: {
-        //             'Content-Type':'application/json'
-        //         },
-        //     }).then(response => response.json())
-        //     // .then((res) => res.json()).then((result) => {
-        //     //     JSON.stringify(result)
-        //     // })
-        //     // .catch((err) => { console.log(err) })
-        // } catch (err) {
-        //     console.log(err)
-        // }
-        
-        // // let response = await fetch(`/trips?eid=${keyword}`)
-        // //     // .then((res) => {
-        // //     //     console.log(res)
-        // //     // })
-        // //     // .then((res) => {
-        // //     //     console.log('SUCCESS')
-        // //     // })
-        // //     // .then(data => console.log(data))
-        // //     // .catch(error => console.log('ERROR'))   
-        // // let responseJson = await response.json()
-        // // // let fromServer = responseJson.myString
-        // // // alert(fromServer)
     }
 
-    function search(e) {
+    const handleSearch = (e) => {
         if (e.key === 'Enter') {
-            getKeywordRequestAPI({keyword: e.target.value});
+            getTripsRequestAPI({keyword: e.target.value});
         }
     }
     return (
-      <input className="Searchbar" placeholder='ค้นหา' onKeyPress={search}>
+      <input className="Searchbar" placeholder='ค้นหา' id='Searchbar' onKeyPress={handleSearch}>
       </input>
     );
   }
