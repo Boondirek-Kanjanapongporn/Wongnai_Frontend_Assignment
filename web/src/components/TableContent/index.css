@@ -1,0 +1,57 @@
+a {
+    color: #63b6e4;
+}
+
+.TableContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.TripContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    /* background-color: green; */
+    margin-top: 40px;
+    min-height: 350px;
+}
+
+.TripImageContent{
+    width: 31%;
+}
+
+.TripImageMain {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 15px;
+}
+
+.TripContent {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+
+.TextContents {
+    text-align: left;
+}
+
+.TextTitle {
+    font-size: 1.6rem;
+    margin-bottom: 7px;
+    color: #111111;
+    font-weight: bold;
+}
+
+.TextDescription {
+    font-size: 1.1rem;
+    white-space: pre-line;
+    margin-bottom: 3px;
+    color: #888888;
+}
