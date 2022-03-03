@@ -1,14 +1,10 @@
-import React, { useContext, useEffect } from 'react'
-import './index.css'
+import React, { useContext } from 'react'
 import TripsContext from '../../context/ManageTrips/tripsContext'
+import './index.css'
 
-const Searchbar = ({setShowData}) => {
+const Searchbar = () => {
     const tripsContext = useContext(TripsContext);
-    const { getTrips, trips } = tripsContext;
-
-    useEffect(() => {
-        console.log(trips)
-    }, [trips])
+    const { getTrips } = tripsContext;
 
     const handleSearch = (e) => {
         if (e.key === 'Enter') {
@@ -16,7 +12,7 @@ const Searchbar = ({setShowData}) => {
         }
     }
     return (
-      <input className="Searchbar" placeholder='ค้นหา' id='Searchbar' onKeyPress={handleSearch}>
+      <input className="Searchbar" placeholder='ค้นหาสถานที่ท่องเที่ยวหรือสิ่งของ' id='Searchbar' onKeyPress={handleSearch}>
       </input>
     );
   }
