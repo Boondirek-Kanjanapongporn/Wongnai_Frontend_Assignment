@@ -2,11 +2,6 @@
     text-align: center;
   }
   
-  .Home-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
   .Home-header {
     min-height: 100vh;
     display: flex;
@@ -19,18 +14,11 @@
     display: flex;
     font-size: calc(40px + 2vmin);
     color: #2c9cdb;
+    margin-top: 60px;
+    margin-bottom: 40px;
   }
   
   .Home-link {
     color: #61dafb;
-  }
-  
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
   }
   
