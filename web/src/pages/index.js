@@ -19,10 +19,6 @@ const Home = () => {
     }
   }, [trips]);
 
-  useEffect(() => {
-    console.log(showData)
-  }, [showData])
-
   return (
     <div className="Home">
         <header className="Home-header">
