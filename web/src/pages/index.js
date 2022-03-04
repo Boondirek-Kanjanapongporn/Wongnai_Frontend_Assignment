@@ -25,14 +25,6 @@ const Home = () => {
             <p className="Home-title">เที่ยวไหนดี</p>
             <Searchbar/>
             <TableContent data={showData}/>
-            <a
-            className="Home-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            >
-            Learn React
-            </a>
         </header>
     </div>
   );
