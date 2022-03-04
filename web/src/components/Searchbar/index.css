@@ -4,12 +4,19 @@
     border-bottom:2px solid;
     border-color: #63b6e4;
     text-align: center;
-    width: 60%;
+    width: 750px;
     height: 1.5em;
     padding-left: 0.5em;
     font-size: 1.2rem;
+    margin-bottom: 40px;
 }
 
 .Searchbar:focus{
     outline: none;
+}
+
+@media only screen and (max-width: 915px) {
+    .Searchbar {
+        width: 85%;
+    }
 }
