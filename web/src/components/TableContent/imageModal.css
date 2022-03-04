@@ -1,0 +1,44 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #00000099;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    cursor: pointer;
+}
+.modal-image {
+    height: auto; 
+    width: auto; 
+    max-width: 50%; 
+    max-height: 50%;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 900px) {
+    .modal-image {
+        max-width: 60%; 
+        max-height: 60%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .modal-image {
+        max-width: 70%; 
+        max-height: 70%;
+    }
+}
