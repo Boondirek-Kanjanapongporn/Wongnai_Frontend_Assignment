@@ -1,9 +1,12 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 import TripsContext from '../../context/ManageTrips/tripsContext'
+import CreateImageModal from './imageModal'
 import './index.css'
 
 const TableContent = ({ data }) => {
     const tripsContext = useContext(TripsContext);
+    const [modal, setModal] = useState(false);
+    const [image, setImage] = useState("");
     const { getTrips } = tripsContext;
 
     const truncateStringbyWord = (str, n) => {
@@ -22,12 +25,17 @@ const TableContent = ({ data }) => {
         getTrips({ keyword: val});
     }
 
+    const handleImageClick = (img) => {
+        setModal(true);
+        setImage(img);
+    }
+
     const tripItems = data.map((item, index) => {
         const tagsLength = item.tags.length;
         return (
             <div key={index} className="TripContainer">
                 <div className="TripImageContent">
-                    <img className="TripImageMain" src={item.photos[0]} alt="รูปภาพ"/>
+                    <img className="TripImageMain" src={item.photos[0]} alt="รูปภาพหลัก" onClick={() => handleImageClick(item.photos[0])}/>
                 </div>
                 <div className="TripContent">
                     <div className="TextContents">
@@ -55,8 +63,15 @@ const TableContent = ({ data }) => {
                             }
                         </p>
                     </div>
-                    <div className="ImageContents">
-
+                    <div className="ImageContentsWrapper">
+                        {item.photos.map((item, index) => {
+                                return (
+                                    <Fragment key={index}>
+                                        {index === 0? null : <img className="ImageContent" src={item} alt={"รูปภาพ" + index} onClick={() => handleImageClick(item)}/>}
+                                    </Fragment>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>
@@ -65,6 +80,12 @@ const TableContent = ({ data }) => {
     return (
         <div className="TableContent">
             {tripItems}
+            {modal? (
+                <CreateImageModal
+                img={image}
+                close={()=>setModal(false)}
+                />
+            ) : null}
         </div>
     );
 }
