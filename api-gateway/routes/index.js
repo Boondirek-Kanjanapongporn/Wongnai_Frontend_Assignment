@@ -15,7 +15,7 @@ router.all('/:apiName/:path', (req, res) => {
             }).then((respond) => {
                 let data = respond.data;
                 let data_filter = data.filter(element => element.title.includes(keyword) || element.description.includes(keyword) || element.tags.includes(keyword))
-                res.send(data_filter)
+                res.status(200).send(data_filter)
             })
             .catch((err) => {
                 res.send(err)
