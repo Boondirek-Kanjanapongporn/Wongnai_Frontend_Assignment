@@ -1,17 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './index.css';
 import Searchbar from '../components/Searchbar';
 import TripsContext from '../context/ManageTrips/tripsContext';
 import TableContent from '../components/TableContent';
+import './index.css';
 
 const Home = () => {
   const [showData, setShowData] = useState([])
   const tripsContext = useContext(TripsContext);
-  const { getTrips, trips } = tripsContext;
-
-  useEffect(() => {
-    getTrips({ keyword: ""});
-  }, [getTrips]);
+  const { trips } = tripsContext;
 
   useEffect(() => {
     if (trips) {
@@ -25,6 +21,9 @@ const Home = () => {
             <p className="Home-title">เที่ยวไหนดี</p>
             <Searchbar/>
             <TableContent data={showData}/>
+            {showData.length === 0? (
+              <h3>ไม่พบรายการค้นหา</h3>
+            ) : null}
         </header>
     </div>
   );
