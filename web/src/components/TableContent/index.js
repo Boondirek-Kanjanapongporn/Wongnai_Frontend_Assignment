@@ -1,13 +1,12 @@
-import React, { Fragment, useContext, useState } from 'react'
-import TripsContext from '../../context/ManageTrips/tripsContext'
+import React, { Fragment, useState } from 'react'
 import CreateImageModal from './imageModal'
+import { useSearchParams } from 'react-router-dom';
 import './index.css'
 
 const TableContent = ({ data }) => {
-    const tripsContext = useContext(TripsContext);
     const [modal, setModal] = useState(false);
     const [image, setImage] = useState("");
-    const { getTrips } = tripsContext;
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const truncateStringbyWord = (str, n) => {
         let temp = str;
@@ -21,8 +20,8 @@ const TableContent = ({ data }) => {
     }
 
     const handleClickTag = (val) => {
-        document.getElementById("Searchbar").value = val;
-        getTrips({ keyword: val});
+        const keyword = val;
+        setSearchParams({ keyword });
     }
 
     const handleImageClick = (img) => {
@@ -33,41 +32,41 @@ const TableContent = ({ data }) => {
     const tripItems = data.map((item, index) => {
         const tagsLength = item.tags.length;
         return (
-            <div key={index} className="TripContainer">
-                <div className="TripImageContent">
-                    <img className="TripImageMain" src={item.photos[0]} alt="รูปภาพหลัก" onClick={() => handleImageClick(item.photos[0])}/>
+            <div key={index} className="trip-container">
+                <div className="trip-image-content">
+                    <img className="trip-image-main" src={item.photos[0]} alt={item.eid} onClick={() => handleImageClick(item.photos[0])}/>
                 </div>
-                <div className="TripContent">
-                    <div className="TextContents">
-                        <h1 className="TextTitle">
-                            <a className="TextTitle" href={item.url} target="_blank" rel="noopener noreferrer">
+                <div className="trip-content">
+                    <div className="text-contents">
+                        <h1 className="text-title">
+                            <a className="text-title" href={item.url} target="_blank" rel="noopener noreferrer">
                                 {item.title}
                             </a>
                         </h1>
-                        <p className="TextDescription">
+                        <p className="text-description">
                             {truncateStringbyWord(item.description, 200)}
-                            <a className="TextSeeMore" href={item.url} target="_blank" rel="noopener noreferrer">
+                            <a className="text-seemore" href={item.url} target="_blank" rel="noopener noreferrer">
                                 อ่านต่อ
                             </a>
                         </p>
-                        <p className="TextTags">
+                        <p className="text-tags">
                             หมวด - 
                             {item.tags.map((item, index) => {
                                 return (
                                     <Fragment key={index}>
                                         {parseInt(index) + 1 === tagsLength? <span> และ </span> : " "}
-                                        <span className="TextTag" onClick={() => handleClickTag(item)}>{item}</span>
+                                        <span className="text-tag" onClick={() => handleClickTag(item)}>{item}</span>
                                     </Fragment>
                                 )
                                 })
                             }
                         </p>
                     </div>
-                    <div className="ImageContentsWrapper">
+                    <div className="image-contents-wrapper">
                         {item.photos.map((item, index) => {
                                 return (
                                     <Fragment key={index}>
-                                        {index === 0? null : <img className="ImageContent" src={item} alt={"รูปภาพ" + index} onClick={() => handleImageClick(item)}/>}
+                                        {index === 0? null : <img className="image-content" src={item} alt={"รูปภาพ" + index} onClick={() => handleImageClick(item)}/>}
                                     </Fragment>
                                 )
                             })
@@ -78,7 +77,7 @@ const TableContent = ({ data }) => {
         )
     })
     return (
-        <div className="TableContent">
+        <div className="table-content">
             {tripItems}
             {modal? (
                 <CreateImageModal
