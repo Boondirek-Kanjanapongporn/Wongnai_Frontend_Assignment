@@ -1,11 +1,12 @@
-.TableContent {
+.table-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
     width: 950px;
 }
 
-.TripContainer {
+.trip-container {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -13,14 +14,20 @@
     padding: 10px;
     margin-bottom: 40px;
     min-height: 350px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.TripImageContent{
+.trip-container:hover {
+    transform: scale(1.02);
+    transition:all 0.2 ease-in-out;
+}
+
+.trip-image-content{
     width: 31%;
     min-height: 350px;
 }
 
-.TripImageMain {
+.trip-image-main {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -29,19 +36,19 @@
     cursor: pointer;
 }
 
-.TripContent {
+.trip-content {
     width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.TextContents {
+.text-contents {
     padding-top: 10px;
     text-align: left;
 }
 
-.TextTitle {
+.text-title {
     font-size: 1.7rem;
     margin-bottom: 7px;
     color: #111111;
@@ -49,40 +56,41 @@
     text-decoration: none;
 }
 
-.TextDescription {
+.text-description {
     font-size: 1.1rem;
     white-space: pre-line;
     margin-bottom: 10px;
     color: #888888;
 }
 
-.TextSeeMore {
+.text-seemore {
     color: #63b6e4;
 }
 
-.TextTags {
+.text-tags {
     font-size: 0.9rem;
     white-space: pre-line;
     margin-bottom: 20px;
     color: #888888;
 }
 
-.TextTag {
+.text-tag {
     text-decoration: underline;
     cursor: pointer;
 }
 
-.ImageContentsWrapper {
+.image-contents-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 30px;
+    gap: 5px 5%;
     min-height: 115px;
 }
 
-.ImageContent {
-    height: 100%;
+.image-content {
+    height: 115px;
     width: 115px;
     border-radius: 15px;
     object-fit: cover;
@@ -91,13 +99,32 @@
 }
 
 @media only screen and (min-width: 970px) {
-    .TripContainer {
+    .trip-container {
         max-height: 400px;
     }
 }
 
-@media only screen and (max-width: 970px) {
-    .TableContent {
-        width: 100%;
+@media only screen and (max-width: 1015px) {
+    .table-content {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .text-title {
+        font-size: 1.5rem;
+    }
+
+    .text-description {
+        font-size: 0.9rem;
+    }
+
+    .text-tags {
+        font-size: 0.7rem;
+    }
+
+    .image-content {
+        height: 100px;
+        width: 100px;
     }
 }
