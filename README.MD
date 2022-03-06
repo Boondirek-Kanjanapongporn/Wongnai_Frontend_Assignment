@@ -1,3 +1,19 @@
+# Github Source Code
+
+```
+Website: https://github.com/Boondirek-Kanjanapongporn/Wongnai_Frontend_Assignment
+
+Gitcode: https://github.com/Boondirek-Kanjanapongporn/Wongnai_Frontend_Assignment.git
+```
+
+# วิธีการ run API-Gateway
+
+```
+cd api-gateway
+node .
+```
+
+
 # Frontend Assignment
 
 แบบทดสอบสำหรับ ผู้สมัครตำแหน่ง Software Engineer, Frontend การทำแบบทดสอบผู้สมัครจะต้องคำนึงถึง กฎสามข้อที่กล่าวไว้ด้านล่างเสมอ เพราะเราเชื่อว่าการพัฒนา Software ที่ดีนั้นไม่เพียงแค่ทำให้ Software ทำงานได้ตาม requirement อย่างเดียว แต่จะต้องคำนึงถึง user และการ maintainance ต่อไปในอนาคตด้วย
