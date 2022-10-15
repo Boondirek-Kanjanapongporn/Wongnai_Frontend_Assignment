@@ -6,18 +6,21 @@ Website: https://github.com/Boondirek-Kanjanapongporn/Wongnai_Frontend_Assignmen
 Gitcode: https://github.com/Boondirek-Kanjanapongporn/Wongnai_Frontend_Assignment.git
 ```
 # วิธีการ run ทุกอย่าง
-```
 ## run API-Gateway
+```
 cd api-gateway
 node .
-
+```
 ## run json server
+```
 cd json-server
 npm start
-
+```
 ## run react web
+```
 cd web
 npm start
+```
 ```
 # วิธีการ run API-Gateway
 
